@@ -12,3 +12,5 @@ production-server
 dump.rdb
 docs/api/*.js
 docs/api/static
+pnpm-lock.yaml
+.pnpm-store/

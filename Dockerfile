@@ -1,4 +1,4 @@
-FROM node:12-alpine
+FROM node:20-alpine
 
 RUN apk add --update bash
 
@@ -6,19 +6,21 @@ RUN apk add --update bash
 WORKDIR /usr/src/app
 
 # Installing dependencies
-COPY package*.json ./
-RUN npm install
+RUN npm install -g pnpm
 
 # Copying source files
+COPY package*.json pnpm-lock.yaml ./
+
+# Install dependencies before building
+RUN pnpm install
+
+# Copy rest of the application
 COPY . .
 
-# Give permission to run script
-RUN chmod +x ./wait-for-it.sh
-
 # Build files
-RUN npm run build
+RUN pnpm build
 
 EXPOSE 3000
 
 # Running the app
-CMD [ "npm", "start" ]
+CMD [ "pnpm", "start" ]

@@ -31,7 +31,7 @@
 ## 기술 스택
 
 - Node (웹 서버)
-- Express (웹 서버 프레임워크)
+- Express (웹 서버 프레임��크)
 - Passport (인증)
 - React (UI 라이브러리)
 - Next (유니버설/서버사이드 렌더링 React)
@@ -41,3 +41,50 @@
 - PostgreSQL (데이터베이스)
 - Redis (캐시 레이어)
 
+## 설치 방법
+
+### 사전 요구사항
+- Node.js v20 이상
+- pnpm (Node.js 패키지 매니저)
+- Docker 및 Docker Compose
+
+### pnpm 설치 및 사용
+
+#### 1. pnpm 전역 설치
+```bash
+npm install -g pnpm
+```
+
+#### 2. 프로젝트 의존성 설치
+```bash
+pnpm install
+```
+
+#### 3. 개발 서버 실행
+```bash
+pnpm dev
+```
+
+> **주의사항**
+> - 개발 서버를 실행하기 전에 PostgreSQL 서비스가 실행 중이어야 합니다.
+> - Docker를 사용하는 경우, 아래 명령어로 먼저 데이터베이스 서비스를 시작하세요:
+>   ```bash
+>   docker-compose up -d
+>   ```
+> - 로컬 PostgreSQL을 사용하는 경우, `.env` 파일의 DB_HOST가 'localhost'로 설정되어 있는지 확인하세요.
+
+#### 4. 프로덕션 빌드
+```bash
+pnpm build
+```
+
+#### 5. 프로덕션 서버 실행
+```bash
+pnpm start
+```
+
+### Docker 실행
+전체 애플리케이션 스택(Node.js, PostgreSQL, Redis)을 한 번에 실행하려면:
+```bash
+docker-compose up
+```
